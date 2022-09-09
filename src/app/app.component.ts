@@ -14,7 +14,7 @@ export class AppComponent {
 
   hideSync: boolean = false;
   
-  _animState: AnimationState = 'clear'
+  animState: AnimationState = 'clear'
   animStateSub$ = new BehaviorSubject<AnimationState>('clear');
   animState$ = this.animStateSub$.asObservable().pipe(
     observeOn(asyncScheduler),
@@ -39,8 +39,4 @@ export class AppComponent {
     ).subscribe()
   }
 
-  get animState() { return this._animState}
-  set animState(v: AnimationState) { this._animState = v}
-
-  mylog(x:string){console.log(x)}
 }
