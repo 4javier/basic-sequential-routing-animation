@@ -1,0 +1,8 @@
+:host ::ng-deep .hide-first-sibling router-outlet + * {
+  display: none;
+}
+
+:host ::ng-deep .hide-second-sibling router-outlet + * + * {
+  display: none;
+}
+

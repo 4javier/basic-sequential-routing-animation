@@ -1,0 +1,15 @@
+<button routerLink="/blue">Go to Blue</button>
+<button routerLink="/red">Go to Red</button>
+<button routerLink="/black">Go to Black</button>
+<button routerLink="/">Clear</button>
+
+<div [class.hide-first-sibling]="hideSync" class="hide-second-sibling"
+  [@routingAnimationSequence]="animState"
+  (@routingAnimationSequence.start)="hideSync = false; animationPending$.next(true)"
+  (@routingAnimationSequence.done)="animationPending$.next(false)"
+>
+  <router-outlet 
+    (activate)="hideSync = true; animStateSub$.next('rendered');"
+    (deactivate)="animState = 'clear'">
+  </router-outlet>
+</div>
